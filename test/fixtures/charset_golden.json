@@ -1,0 +1,113 @@
+{
+  "source": "Browser TextDecoder results (Node v26.9.0, ICU 78.3) for UTF-8 and windows-1252 labels.",
+  "cases": [
+    {
+      "name": "utf-8: empty",
+      "label": "utf-8",
+      "bytes": "",
+      "text": ""
+    },
+    {
+      "name": "utf-8: ASCII sentinel endian",
+      "label": "utf-8",
+      "bytes": "41",
+      "text": "A"
+    },
+    {
+      "name": "utf-8: matching BOM",
+      "label": "utf-8",
+      "bytes": "EFBBBF41",
+      "text": "A"
+    },
+    {
+      "name": "utf-8: repeated BOM",
+      "label": "utf-8",
+      "bytes": "EFBBBFEFBBBF41",
+      "text": "﻿A"
+    },
+    {
+      "name": "utf-8: declared encoding retained with BOM 0",
+      "label": "utf-8",
+      "bytes": "EFBBBF41",
+      "text": "A"
+    },
+    {
+      "name": "utf-8: declared encoding retained with BOM 1",
+      "label": "utf-8",
+      "bytes": "FFFE41",
+      "text": "��A"
+    },
+    {
+      "name": "utf-8: declared encoding retained with BOM 2",
+      "label": "utf-8",
+      "bytes": "FEFF41",
+      "text": "��A"
+    },
+    {
+      "name": "UTF8 truncated_two",
+      "label": "utf-8",
+      "bytes": "C3",
+      "text": "�"
+    },
+    {
+      "name": "UTF8 truncated_three",
+      "label": "utf-8",
+      "bytes": "E282",
+      "text": "�"
+    },
+    {
+      "name": "UTF8 invalid_trail",
+      "label": "utf-8",
+      "bytes": "E28222",
+      "text": "�\""
+    },
+    {
+      "name": "UTF8 overlong",
+      "label": "utf-8",
+      "bytes": "C0AF",
+      "text": "��"
+    },
+    {
+      "name": "UTF8 surrogate",
+      "label": "utf-8",
+      "bytes": "EDA080",
+      "text": "���"
+    },
+    {
+      "name": "UTF8 beyond_unicode",
+      "label": "utf-8",
+      "bytes": "F4908080",
+      "text": "����"
+    },
+    {
+      "name": "windows-1252: all bytes",
+      "label": "windows-1252",
+      "bytes": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF",
+      "text": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+    },
+    {
+      "name": "windows-1252: UTF8 BOM remains legacy text",
+      "label": "windows-1252",
+      "bytes": "EFBBBF41",
+      "text": "ï»¿A"
+    },
+    {
+      "name": "label: \" \\tUtF-8\\r\\n\"",
+      "label": " \tUtF-8\r\n",
+      "bytes": "8041",
+      "text": "�A"
+    },
+    {
+      "name": "label: \"ASCII\"",
+      "label": "ASCII",
+      "bytes": "8041",
+      "text": "€A"
+    },
+    {
+      "name": "label: \" latin1 \"",
+      "label": " latin1 ",
+      "bytes": "8041",
+      "text": "€A"
+    }
+  ]
+}

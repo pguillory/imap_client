@@ -1,0 +1,158 @@
+[
+  {
+    "name": "single text/plain",
+    "structure": "\"TEXT\" \"PLAIN\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"7BIT\" 3028 92",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "single text/html",
+    "structure": "\"TEXT\" \"HTML\" (\"CHARSET\" \"UTF-8\") NIL NIL \"7BIT\" 500 10",
+    "plain": null,
+    "html": "1"
+  },
+  {
+    "name": "multipart/alternative plain+html",
+    "structure": "(\"TEXT\" \"PLAIN\" (\"charset\" \"ISO-8859-1\") NIL NIL \"quoted-printable\" 1744 0)(\"TEXT\" \"HTML\" (\"charset\" \"ISO-8859-1\") NIL NIL \"quoted-printable\" 1967 0) \"ALTERNATIVE\"",
+    "plain": "1",
+    "html": "2"
+  },
+  {
+    "name": "mixed > alternative + PDF",
+    "structure": "((\"text\" \"plain\" (\"charset\" \"utf-8\") NIL NIL \"7bit\" 257 9 NIL NIL NIL NIL)(\"text\" \"html\" (\"charset\" \"utf-8\") NIL NIL \"quoted-printable\" 655 9 NIL NIL NIL NIL) \"alternative\" (\"boundary\" \"001a1137a5047848dd05157ddaa1\") NIL)(\"application\" \"pdf\" (\"name\" \"test.xml\" \"x-apple-part-url\" \"9D00D9A2-98AB-4EFB-85BA-FB255F8BF3D7\") NIL NIL \"base64\" 4383638 NIL (\"attachment\" (\"filename\" \"test.xml\")) NIL NIL) \"mixed\" (\"boundary\" \"001a1137a5047848e405157ddaa3\") NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "mixed > alternative (extra spaces)",
+    "structure": "((\"text\" \"plain\"  (\"charset\" \"UTF-8\") NIL NIL \"7bit\" 409 7 NIL NIL NIL)(\"text\" \"html\"  (\"charset\" \"UTF-8\") NIL NIL \"7bit\" 592 10 NIL NIL NIL) \"alternative\" (\"boundary\" \"--==_mimepart_5277b641dcc3_57d5887e8325d8\" \"charset\" \"UTF-8\") NIL NIL) \"mixed\" (\"boundary\" \"--==_mimepart_5277b64110f79_57d5887e832634\" \"charset\" \"UTF-8\") NIL NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "mixed > alternative + TIFF",
+    "structure": "((\"text\" \"plain\" (\"charset\" \"utf-8\") NIL NIL \"quoted-printable\" 1143 37 NIL NIL NIL)(\"text\" \"html\" (\"charset\" \"utf-8\") NIL NIL \"quoted-printable\" 4618 106 NIL NIL NIL) \"alternative\" (\"boundary\" \"Boundary-00=_Z7P340MWKGMMYJ0CCJD0\") NIL NIL)(\"image\" \"tiff\" (\"name\" \"8dd0e430.tif\") NIL NIL \"base64\" 204134 \"pmZp5QOBa9BIqFNmvxUiyQ==\" (\"attachment\" (\"filename\" \"8dd0e430.tif\")) NIL) \"mixed\" (\"boundary\" \"Boundary-00=_T7P340MWKGMMYJ0CCJD0\") NIL NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "mixed > alternative + broken related",
+    "structure": "((\"TEXT\" \"PLAIN\" (\"CHARSET\" \"UTF-8\" \"DELSP\" \"yes\" \"FORMAT\" \"flowed\") NIL NIL \"BASE64\" 10418 133 NIL NIL NIL)(\"TEXT\" \"HTML\" (\"CHARSET\" \"UTF-8\") NIL NIL \"BASE64\" 34544 442 NIL NIL NIL) \"ALTERNATIVE\" (\"BOUNDARY\" \"94eb2c1cd0507723d5054c1ce6cb\") NIL NIL)(\"RELATED\" NIL (\"ATTACHMENT\" NIL) NIL)(\"RELATED\" NIL (\"ATTACHMENT\" NIL) NIL)(\"RELATED\" NIL (\"ATTACHMENT\" NIL) NIL)(\"RELATED\" NIL (\"ATTACHMENT\" NIL) NIL) \"MIXED\" (\"BOUNDARY\" \"94eb2c1cd0507723e6054c1ce6cd\") NIL NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "mixed with HTML first, plain second",
+    "structure": "(\"TEXT\" \"HTML\" (\"CHARSET\" \"us-ascii\") NIL NIL \"QUOTED-PRINTABLE\" 55 3)(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"us-ascii\") NIL NIL \"7BIT\" 26 1) \"MIXED\"",
+    "plain": "2",
+    "html": "1"
+  },
+  {
+    "name": "mixed > alternative[html, plain] + attachment",
+    "structure": "((\"text\" \"html\" (\"charset\" \"utf-8\") NIL NIL \"7bit\" 97 3 NIL NIL NIL NIL)(\"text\" \"plain\" (\"charset\" \"utf-8\") NIL NIL \"7bit\" 62 3 NIL NIL NIL NIL) \"alternative\" (\"boundary\" \"===============8211050864078048428==\") NIL NIL NIL)(\"text\" \"plain\" (\"charset\" \"utf-8\") NIL NIL \"7bit\" 16 1 NIL (\"attachment\" (\"filename\" \"attachment.txt\")) NIL NIL) \"mixed\" (\"boundary\" \"===============0373402508605428821==\") NIL NIL NIL",
+    "plain": "1.2",
+    "html": "1.1"
+  },
+  {
+    "name": "report with text/plain first",
+    "structure": "(\"text\" \"plain\" (\"charset\" \"us-ascii\") NIL \"Notification\" \"7bit\" 510 14 NIL NIL NIL NIL)(\"message\" \"delivery-status\" NIL NIL \"Delivery report\" \"7bit\" 410 NIL NIL NIL NIL)(\"text\" \"rfc822-headers\" (\"charset\" \"us-ascii\") NIL \"Undelivered Message Headers\" \"7bit\" 612 15 NIL NIL NIL NIL) \"report\" (\"report-type\" \"delivery-status\" \"boundary\" \"27797BEA649.1364298175/xxxxxx.localdomain\") NIL NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "report with empty RFC822",
+    "structure": "(\"text\" \"plain\" (\"charset\" \"UTF-8\") NIL NIL \"base64\" 232 4 NIL NIL NIL)(\"message\" \"delivery-status\" NIL NIL NIL \"7BIT\" 421 NIL NIL NIL)(\"message\" \"rfc822\" NIL NIL NIL \"7BIT\" 787 (NIL NIL NIL NIL NIL NIL NIL NIL NIL NIL) () 0 NIL NIL NIL) \"report\" (\"report-type\" \"delivery-status\" \"boundary\" \"==IFJRGLKFGIR60132UHRUHIHD\") NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "mixed > alternative + rfc822",
+    "structure": "((\"TEXT\" \"PLAIN\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"QUOTED-PRINTABLE\" 69 1)(\"TEXT\" \"HTML\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"QUOTED-PRINTABLE\" 455 12) \"ALTERNATIVE\")(\"MESSAGE\" \"RFC822\" (\"NAME\" \"ATT00026.eml\") NIL NIL \"7BIT\" 4079755) \"MIXED\")",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "mixed > alternative + rfc822 as basic type",
+    "structure": "((\"TEXT\" \"PLAIN\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"7BIT\" 416 21 NIL NIL NIL)(\"TEXT\" \"HTML\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"7BIT\" 1493 32 NIL NIL NIL) \"ALTERNATIVE\" (\"BOUNDARY\" \"Boundary_(ID_IaecgfnXwG5bn3x8lIeGIQ)\") NIL NIL)(\"MESSAGE\" \"RFC822\" (\"NAME\" \"Fw_ ____ _____ ____.eml\") NIL NIL \"7BIT\" 1980088 NIL (\"ATTACHMENT\" (\"FILENAME\" \"Fw_ ____ _____ ____.eml\")) NIL) \"MIXED\" (\"BOUNDARY\" \"Boundary_(ID_eDdLc/j0mBIzIlR191pHjA)\") NIL NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "multi-level nested",
+    "structure": "((\"text\" \"plain\" (\"charset\" \"iso-8859-2\") NIL NIL \"quoted-printable\" 28 2 NIL NIL NIL NIL) (\"text\" \"html\" (\"charset\" \"iso-8859-2\") NIL NIL \"quoted-printable\" 1707 65 NIL NIL NIL NIL) \"alternative\" (\"boundary\" \"----=_NextPart_001_0078_01CBB179.57530990\") NIL NIL NIL) (\"message\" \"rfc822\" NIL NIL NIL \"7bit\" 641 (\"Sat, 8 Jan 2011 14:16:36 +0100\" \"Subj 2\" ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Recipient\" NIL \"recipient\" \"example.test\")) NIL NIL NIL NIL) (\"text\" \"plain\" (\"charset\" \"iso-8859-2\") NIL NIL \"quoted-printable\" 185 18 NIL NIL (\"cs\") NIL) 31 NIL (\"attachment\" NIL) NIL NIL) (\"message\" \"rfc822\" NIL NIL NIL \"7bit\" 50592 (\"Sat, 8 Jan 2011 13:58:39 +0100\" \"Subj 1\" ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Some Name, SOMECOMPANY\" NIL \"recipient\" \"example.com\")) ((\"Recipient\" NIL \"recipient\" \"example.test\")) NIL NIL NIL NIL) ( (\"text\" \"plain\" (\"charset\" \"iso-8859-2\") NIL NIL \"quoted-printable\" 4296 345 NIL NIL NIL NIL) (\"text\" \"html\" (\"charset\" \"iso-8859-2\") NIL NIL \"quoted-printable\" 45069 1295 NIL NIL NIL NIL) \"alternative\" (\"boundary\" \"----=_NextPart_000_0073_01CBB179.57530990\") NIL (\"cs\") NIL) 1669 NIL (\"attachment\" NIL) NIL NIL) \"mixed\" (\"boundary\" \"----=_NextPart_000_0077_01CBB179.57530990\") NIL (\"cs\") NIL",
+    "plain": "1.1",
+    "html": "1.2"
+  },
+  {
+    "name": "double-nested RFC822",
+    "structure": "(\"TEXT\" \"PLAIN\" (\"CHARSET\" 'us-ascii') NIL NIL \"7BIT\" 2 1 NIL NIL NIL)(\"MESSAGE\" \"RFC822\" NIL NIL NIL \"7BIT\" 3930 (\"Tue, 16 Jul 2002 15:29:17 -0400\" \"Re: [Fwd: Here is the the list of uids]\" ((\"Michael Etcetera\" NIL \"michael.etcetera\" \"generic.com\")) ((\"Michael Etcetera\" NIL \"michael.etcetera\" \"generic.com\")) ((\"Michael Etcetera\" NIL \"michael.etcetera\" \"generic.com\")) ((\"Michael Etcetera\" NIL \"michael.etcetera\" \"generic.com\")) ((\"David J Kavid\" NIL \"david.kavid\" \"generic.com\")) NIL NIL \"<72f9a217.a21772f9@generic.com>\") ((\"TEXT\" \"PLAIN\" (\"CHARSET\" \"us-ascii\") NIL NIL \"7BIT\" 369 11 NIL NIL NIL)(\"MESSAGE\" \"RFC822\" NIL NIL NIL \"7BIT\" 2599 (\"Tue, 9 Jul 2002 13:42:04 -0400\" \"Here is the the list of uids\" ((\"Nicholas Kringle\" NIL \"nicholas.kringle\" \"generic.com\")) ((\"Nicholas Kringle\" NIL \"nicholas.kringle\" \"generic.com\")) ((\"Nicholas Kringle\" NIL \"nicholas.kringle\" \"generic.com\")) ((\"Michael Etcetera\" NIL \"michael.etcetera\" \"generic.com\")) ((\"Richard W Continued\" NIL \"richard.continued\" \"generic.com\")) NIL NIL \"<015401c2276f$f09b7c10$59cab08c@one.two.generic.com>\") (((\"TEXT\" \"PLAIN\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"QUOTED-PRINTABLE\" 256 10 NIL NIL NIL)(\"TEXT\" \"HTML\" (\"CHARSET\" \"iso-8859-1\") NIL NIL \"QUOTED-PRINTABLE\" 791 22 NIL NIL NIL) \"ALTERNATIVE\" (\"BOUNDARY\" \"----=_NextPart_001_0151_01C2274E.6969D0F0\") NIL NIL) \"MIXED\" (\"BOUNDARY\" \"----=_NextPart_000_0150_01C2274E.6969D0F0\") NIL NIL) 75 NIL NIL NIL) \"MIXED\" (\"BOUNDARY\" \"--1f34eac2082b02\") NIL (\"EN\")) 118 NIL NIL NIL) \"MIXED\" (\"BOUNDARY\" \"------------F600BD8FDDD648ABA72A09E0\") NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "empty multipart",
+    "structure": "(\"MIXED\")",
+    "plain": null,
+    "html": null
+  },
+  {
+    "name": "empty inner multipart",
+    "structure": "(\"ALTERNATIVE\" (\"BOUNDARY\" \"==alternative_xad5934455aeex\") NIL NIL)(\"TEXT\" \"HTML\" (\"CHARSET\" \"iso-8859-1\" \"NAME\" \"seti_letter.html\") NIL NIL \"7BIT\" 6769 171 NIL NIL NIL) \"ALTERNATIVE\" (\"BOUNDARY\" \"==alternative_xad5934455aeex\") NIL NIL",
+    "plain": null,
+    "html": "2"
+  },
+  {
+    "name": "empty string media type",
+    "structure": "(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"windows-1251\") NIL NIL \"base64\" 356 5)( \"X-ZIP\" (\"BOUNDARY\" \"\") NIL NIL \"base64\" 4096) \"MIXED\" (\"BOUNDARY\" \"--cd49a2f5ed4ed0cbb6f9f1c7f125541f\") NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "missing APPLICATION subtype",
+    "structure": "(\"APPLICATION\" NIL NIL NIL \"base64\" 356) \"MIXED\" (\"BOUNDARY\" \"--cd49a2f5ed4ed0cbb6f9f1c7f125541f\") NIL NIL)",
+    "plain": null,
+    "html": null
+  },
+  {
+    "name": "missing AUDIO subtype",
+    "structure": "(\"AUDIO\" NIL NIL NIL \"base64\" 356) \"MIXED\" (\"BOUNDARY\" \"--cd49a2f5ed4ed0cbb6f9f1c7f125541f\") NIL NIL)",
+    "plain": null,
+    "html": null
+  },
+  {
+    "name": "missing MESSAGE subtype",
+    "structure": "(\"MESSAGE\" NIL NIL NIL \"base64\" 356) \"MIXED\" (\"BOUNDARY\" \"--cd49a2f5ed4ed0cbb6f9f1c7f125541f\") NIL NIL)",
+    "plain": null,
+    "html": null
+  },
+  {
+    "name": "TEXT without subtype (params in subtype position)",
+    "structure": "(\"TEXT\" (\"CHARSET\" \"windows-1251\") NIL NIL \"base64\" 356 5) \"MIXED\" (\"BOUNDARY\" \"--cd49a2f5ed4ed0cbb6f9f1c7f125541f\") NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "heavy extension data, NiL mixed case",
+    "structure": "(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"7BIT\" 1152 23 \"123456789abcdef\" (\"dsp-type\" (\"dsp-fld-param\" \"val1\" \"key2\" \"val2\")) (\"lang1\" \"lang2\") \"loc\" \"ext0\" 1 (2) \"ext3\" ((((((4)))))) (\"ext number\" 5))(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"US-ASCII\" \"NAME\" \"trip.txt\") \"<960723163407.20117h@washington.example.com>\" \"Your trip details\" \"BASE64\" 4554 73 NiL NIL \"lang3\" \"loc...\" \"ext\" \"part deux\" \"electric boogaloo\") \"MIXED\" (\"ext\" \"mpart\" \"fld\" \"param\") (\"multi-dsp\" (\"multi dsp body-fld-param\" \"param value\")) (\"lang\" \"lang\" \"langy\" \"LANG\" \"lang\") \"location mclocation face\" \"extended release\" ((((((1) (2) (3)))) \"done\")))",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "full extension data (md5, dsp, lang, loc)",
+    "structure": "(\"text\" \"plain\" (\"charset\" \"iso-8859-1\") NIL NIL \"quoted-printable\" 28 2 \"md5sum\" (\"inline\" (\"filename\" \"body.txt\")) \"en\" \"http://www.google.com/body.txt\") (\"text\" \"html\" (\"charset\" \"iso-8859-1\") NIL NIL \"quoted-printable\" 1707 65 \"md5sum\" (\"inline\" (\"filename\" \"body.html\")) \"en\" \"http://www.google.com/body.html\") \"alternative\" (\"boundary\" \"----=_NextPart_001_0078_01CBB179.57530990\") (\"inline\" (\"filename\" \"alternative.txt\")) \"en\" \"http://www.google.com/alternative.txt\"",
+    "plain": "1",
+    "html": "2"
+  },
+  {
+    "name": "deeply nested torture-test structure",
+    "structure": "(\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 617 16 NIL NIL NIL NIL)(\"message\" \"rfc822\" NIL NIL \"I'll be whatever I wanna do. --Fry\" \"7bit\" 582 (\"23 Oct 2003 22:25:56 -0700\" \"plain jane message\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066973156.4264.42.camel@localhost>\") (\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 311 9 NIL NIL NIL NIL) 18 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Would you kindly shut your noise-hole? --Bender\" \"7bit\" 1460 (\"23 Oct 2003 23:15:11 -0700\" \"messages inside messages inside...\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066976111.4263.74.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 193 3 NIL NIL NIL NIL)(\"message\" \"rfc822\" NIL NIL \"At the risk of sounding negative, no. --Leela\" \"7bit\" 697 (\"23 Oct 2003 23:09:05 -0700\" \"the original message\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066975745.4263.70.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 78 3 NIL NIL NIL NIL)(\"application\" \"x-gzip\" (\"NAME\" \"foo.gz\") NIL NIL \"base64\" 58 NIL (\"attachment\" (\"filename\" \"foo.gz\")) NIL NIL) \"mixed\" (\"boundary\" \"=-XFYecI7w+0shpolXq8bb\") NIL NIL NIL) 25 NIL (\"inline\" NIL) NIL NIL) \"mixed\" (\"boundary\" \"=-9Brg7LoMERBrIDtMRose\") NIL NIL NIL) 49 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Dirt doesn't need luck! --Professor\" \"7bit\" 817 (\"23 Oct 2003 22:40:49 -0700\" \"this message JUST contains an attachment\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066974048.4264.62.camel@localhost>\") (\"application\" \"x-gzip\" (\"NAME\" \"blah.gz\") NIL \"Attachment has identical content to above foo.gz\" \"base64\" 396 NIL (\"attachment\" (\"filename\" \"blah.gz\")) NIL NIL) 17 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Hold still, I don't have good depth perception! --Leela\" \"7bit\" 1045 (\"23 Oct 2003 23:09:16 -0700\" \"Attachment filename vs. name\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066975756.4263.70.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 377 6 NIL NIL NIL NIL)(\"application\" \"x-gzip\" (\"NAME\" \"blah2.gz\") NIL \"filename is blah1.gz, name is blah2.gz\" \"base64\" 58 NIL (\"attachment\" (\"filename\" \"blah1.gz\")) NIL NIL) \"mixed\" (\"boundary\" \"=-1066975756jd02\") NIL NIL NIL) 29 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Hello little man. I WILL DESTROY YOU! --Moro\" \"7bit\" 1149 (\"23 Oct 2003 23:09:21 -0700\" \"No filename? No problem!\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066975761.4263.70.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 517 10 NIL NIL NIL NIL)(\"application\" \"x-gzip\" NIL NIL \"I'm getting sick of witty things to say\" \"base64\" 58 NIL (\"attachment\" NIL) NIL NIL) \"mixed\" (\"boundary\" \"=-1066975756jd03\") NIL NIL NIL) 33 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Friends! Help! A guinea pig tricked me! --Zoidberg\" \"7bit\" 896 (\"23 Oct 2003 22:40:45 -0700\" \"html and text, both inline\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066974044.4264.62.camel@localhost>\") ((\"text\" \"html\" (\"CHARSET\" \"utf-8\") NIL NIL \"8bit\" 327 11 NIL NIL NIL NIL)(\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 61 2 NIL NIL NIL NIL) \"mixed\" (\"boundary\" \"=-ZCKMfHzvHMyK1iBu4kff\") NIL NIL NIL) 33 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Smeesh! --Amy\" \"7bit\" 642 (\"23 Oct 2003 22:41:29 -0700\" \"text and text, both inline\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066974089.4265.64.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 62 2 NIL NIL NIL NIL)(\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 68 2 NIL NIL NIL NIL) \"mixed\" (\"boundary\" \"=-pNc4wtlOIxs8RcX7H/AK\") NIL NIL NIL) 24 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"That's not a cigar. Uh... and it's not mine. --Hermes\" \"7bit\" 1515 (\"23 Oct 2003 22:39:17 -0700\" \"HTML and... HTML?\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066973957.4263.59.camel@localhost>\") ((\"text\" \"html\" (\"CHARSET\" \"utf-8\") NIL NIL \"8bit\" 824 22 NIL NIL NIL NIL)(\"text\" \"html\" (\"NAME\" \"htmlfile.html\" \"CHARSET\" \"UTF-8\") NIL NIL \"8bit\" 118 6 NIL (\"attachment\" (\"filename\" \"htmlfile.html\")) NIL NIL) \"mixed\" (\"boundary\" \"=-zxh/IezwzZITiphpcbJZ\") NIL NIL NIL) 49 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"The spirit is willing, but the flesh is spongy, and bruised. --Zapp\" \"7bit\" 6683 (\"23 Oct 2003 22:23:16 -0700\" \"smiley!\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066972996.4264.39.camel@localhost>\") (((((\"text\" \"plain\" (\"charset\" \"us-ascii\") NIL NIL \"quoted-printable\" 1606 42 NIL NIL NIL NIL)(\"text\" \"html\" (\"charset\" \"utf-8\") NIL NIL \"quoted-printable\" 2173 54 NIL NIL NIL NIL) \"alternative\" (\"boundary\" \"=-dHujWM/Xizz57x/JOmDF\") NIL NIL NIL)(\"image\" \"png\" (\"name\" \"smiley-3.png\") \"<1066971953.4232.15.camel@localhost>\" NIL \"base64\" 1122 NIL (\"attachment\" (\"filename\" \"smiley-3.png\")) NIL NIL) \"related\" (\"type\" \"multipart/alternative\" \"boundary\" \"=-GpwozF9CQ7NdF+fd+vMG\") NIL NIL NIL)(\"image\" \"gif\" (\"name\" \"dot.gif\") NIL NIL \"base64\" 96 NIL (\"attachment\" (\"filename\" \"dot.gif\")) NIL NIL) \"mixed\" (\"boundary\" \"=-CgV5jm9HAY9VbUlAuneA\") NIL NIL NIL)(\"application\" \"pgp-signature\" (\"name\" \"signature.asc\") NIL \"This is a digitally signed message part\" \"7bit\" 196 NIL NIL NIL NIL) \"signed\" (\"micalg\" \"pgp-sha1\" \"protocol\" \"application/pgp-signature\" \"boundary\" \"=-vH3FQO9a8icUn1ROCoAi\") NIL NIL NIL) 176 NIL (\"inline\" NIL) NIL NIL)(\"message\" \"rfc822\" NIL NIL \"Kittens give Morbo gas. --Morbo\" \"7bit\" 3113 (\"23 Oct 2003 22:32:37 -0700\" \"the PROPER way to do alternative/related\" ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((\"Ryan Finnie\" NIL \"rfinnie\" \"domain.dom\")) ((NIL NIL \"bob\" \"domain.dom\")) NIL NIL NIL \"<1066973557.4265.51.camel@localhost>\") ((\"text\" \"plain\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"8bit\" 863 22 NIL NIL NIL NIL)((\"text\" \"html\" (\"CHARSET\" \"utf-8\") NIL NIL \"8bit\" 1283 22 NIL NIL NIL NIL)(\"image\" \"gif\" NIL \"<1066973340.4232.46.camel@localhost>\" NIL \"base64\" 116 NIL NIL NIL NIL) \"related\" (\"boundary\" \"=-bFkxH1S3HVGcxi+o/5jG\") NIL NIL NIL) \"alternative\" (\"type\" \"multipart/alternative\" \"boundary\" \"=-tyGlQ9JvB5uvPWzozI+y\") NIL NIL NIL) 79 NIL (\"inline\" NIL) NIL NIL) \"mixed\" (\"boundary\" \"=-qYxqvD9rbH0PNeExagh1\") NIL NIL NIL)",
+    "plain": "1",
+    "html": null
+  },
+  {
+    "name": "RFC3501 multipart/mixed",
+    "structure": "(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"US-ASCII\") NIL NIL \"7BIT\" 1152 23)(\"TEXT\" \"PLAIN\" (\"CHARSET\" \"US-ASCII\" \"NAME\" \"cc.diff\") \"<960723163407.20117h@cac.washington.edu>\" \"Compiler diff\" \"BASE64\" 4554 73) \"MIXED\"",
+    "plain": "1",
+    "html": null
+  }
+]
