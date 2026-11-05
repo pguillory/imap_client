@@ -22,7 +22,7 @@ IMAPClient isn't on Hex yet. Add it as a git dependency pinned to a tag:
 ```elixir
 def deps do
   [
-    {:imap_client, git: "https://github.com/pguillory/imap_client.git", tag: "v0.1.0"}
+    {:imap_client, git: "https://github.com/pguillory/imap_client.git", tag: "v0.2.0"}
   ]
 end
 ```
@@ -45,7 +45,8 @@ email.text_body
 
 {:ok, %{missing_uids: []}} = IMAPClient.mark_read(config, [hd(results).uid])
 {:ok, %{missing_uids: [], unpurged_uids: []}} = IMAPClient.move(config, [42], "Archive")
-:ok = IMAPClient.append(config, "Drafts", raw_message, flags: ["\\Seen", "\\Draft"])
+{:ok, %{uid: uid, uid_validity: validity}} =
+  IMAPClient.append(config, "Drafts", raw_message, flags: ["\\Seen", "\\Draft"])
 ```
 
 Credentials, one of:
@@ -69,7 +70,9 @@ Helpers: `search/2`, `read/3`, `read_many/3`, `move/4`, `mark_read/3`,
 `list_special_use_folders/1`, `append/4`, `download_attachment/5` and
 `test_connection/1`. A move uses MOVE when the server has it, otherwise COPY, `\Deleted`
 and UID EXPUNGE of just those UIDs. Plain EXPUNGE is never sent, because it could
-remove other clients' deleted messages.
+remove other clients' deleted messages. `append/4` returns the new message's UID and
+UIDVALIDITY when the server reports them with APPENDUID (UIDPLUS, RFC 4315), else both
+`nil`.
 
 ## Connections
 

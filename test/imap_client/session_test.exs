@@ -190,7 +190,7 @@ defmodule IMAPClient.SessionTest do
     assert {:ok, folders} = list_special_use_folders(config)
     assert Enum.any?(folders, &(&1.name == "Drafts" and "\\Drafts" in &1.flags))
     bytes = "Subject: résumé\r\n\r\nhello"
-    assert :ok = append(config, "Drafts", bytes, flags: ["\\Seen", "\\Draft"])
+    assert {:ok, %{uid: 1}} = append(config, "Drafts", bytes, flags: ["\\Seen", "\\Draft"])
     draft = hd(FakeServer.mailbox(server, "Drafts").messages)
     assert Enum.sort(draft.flags) == ["\\Draft", "\\Seen"]
   end
@@ -655,7 +655,7 @@ defmodule IMAPClient.SessionTest do
       assert {:ok, %{missing_uids: []}} = move(config, [7], @name, "INBOX")
       assert [_] = uids(server, @wire)
 
-      assert :ok =
+      assert {:ok, %{uid: _}} =
                append(config, @name, "Subject: x\r\n\r\nbody\r\n", flags: ["\\Seen", "\\Draft"])
 
       assert length(uids(server, @wire)) == 2

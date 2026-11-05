@@ -242,6 +242,10 @@ defmodule IMAPClient do
   32 KiB writes. Pass a connection, or a session config to open, sign in and clean up one
   short-lived connection around it. Options: `:flags`, a list such as
   `["\\\\Seen", "\\\\Draft"]` (default none), and `:internal_date`, a `DateTime`.
+  Returns `{:ok, %{uid: uid, uid_validity: validity}}`: the new message's UID and its
+  mailbox's UIDVALIDITY from the server's APPENDUID (RFC 4315, servers that advertise
+  UIDPLUS), or both `nil` when the tagged OK carries none, a UID set or a number
+  outside 1..4294967295. They are never guessed from UIDNEXT.
   A timeout or closed connection has an unknown outcome: don't retry automatically.
   """
   def append(connection_or_config, mailbox, message, opts \\ [])

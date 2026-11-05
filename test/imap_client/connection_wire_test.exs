@@ -41,11 +41,14 @@ defmodule IMAPClient.ConnectionWireTest do
         {:ok, received} = SocketWait.recv(:gen_tcp, socket, byte_size(bytes))
         {:ok, "\r\n"} = SocketWait.recv(:gen_tcp, socket, 2)
         send(parent, {:literal, received})
-        :ok = :gen_tcp.send(socket, "A1 OK appended\r\n")
+        # Only the tagged OK may carry APPENDUID (RFC 4315).
+        :ok = :gen_tcp.send(socket, "* OK [APPENDUID 77 5] untagged\r\nA1 OK appended\r\n")
         SocketWait.recv(:gen_tcp, socket)
       end)
 
-    assert :ok = append(connection, "Drafts", bytes, flags: ["\\Seen", "\\Draft"])
+    assert append(connection, "Drafts", bytes, flags: ["\\Seen", "\\Draft"]) ==
+             {:ok, %{uid: nil, uid_validity: nil}}
+
     assert_receive {:literal, ^bytes}
   end
 

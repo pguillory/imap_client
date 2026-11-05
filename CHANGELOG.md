@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- Breaking: `append/4` returns `{:ok, %{uid: uid, uid_validity: validity}}` instead
+  of `:ok`, from the tagged OK's APPENDUID response code (RFC 4315). Both are `nil`
+  when the server sends none, or sends a UID set or an out-of-range number.
+
 ## 0.1.0
 
 First release: an IMAP client with implicit TLS (verified chain and hostname),

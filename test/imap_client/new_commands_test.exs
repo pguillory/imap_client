@@ -303,9 +303,10 @@ defmodule IMAPClient.NewCommandsTest do
       assert append(config, "Drafts", "Subject: x\r\n\r\nbody",
                flags: ["\\Flagged"],
                internal_date: date
-             ) == :ok
+             ) == {:ok, %{uid: 1, uid_validity: 1}}
 
-      assert append(config, "Drafts", "Subject: y\r\n\r\nbody") == :ok
+      assert append(config, "Drafts", "Subject: y\r\n\r\nbody") ==
+               {:ok, %{uid: 2, uid_validity: 1}}
 
       assert [first, second] = FakeServer.mailbox(server, "Drafts").messages
       assert first.flags == ["\\Flagged"]
@@ -330,7 +331,22 @@ defmodule IMAPClient.NewCommandsTest do
       assert append(connection, "Drafts", "hi",
                flags: ["\\Seen", "$Label"],
                internal_date: DateTime.new!(~D[2026-03-04], ~T[05:06:07], "Etc/UTC")
-             ) == :ok
+             ) == {:ok, %{uid: nil, uid_validity: nil}}
+    end
+
+    test "returns APPENDUID's UID and UIDVALIDITY" do
+      {server, config} = fake()
+      :ok = FakeServer.set_uid_validity(server, "Drafts", 77)
+
+      assert append(config, "Drafts", "Subject: x\r\n\r\nbody") ==
+               {:ok, %{uid: 1, uid_validity: 77}}
+    end
+
+    test "returns nil UID and UIDVALIDITY from a server without UIDPLUS" do
+      {_server, config} = fake(capabilities: ["IMAP4rev1", "AUTH=PLAIN"])
+
+      assert append(config, "Drafts", "Subject: x\r\n\r\nbody") ==
+               {:ok, %{uid: nil, uid_validity: nil}}
     end
 
     test "refuses invalid flags and dates before sending" do

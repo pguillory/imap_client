@@ -1090,6 +1090,10 @@ defmodule IMAPClient.Connection do
     {:ok, Protocol.status(lines, folder)}
   end
 
+  defp result({:append, _folder, _bytes, _opts}, _lines, completion) do
+    {:ok, Protocol.append_uid(completion)}
+  end
+
   defp result(_, _, _) do
     :ok
   end

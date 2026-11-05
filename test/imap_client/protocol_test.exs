@@ -15,6 +15,30 @@ defmodule IMAPClient.ProtocolTest do
         do: assert(tagged_status(line) == expected)
   end
 
+  test "reads APPENDUID only from a tagged OK with one valid UID" do
+    for {line, expected} <- [
+          {"A1 OK [APPENDUID 77 5] done", {77, 5}},
+          {"a1 ok [appenduid 1 4294967295]", {1, 4_294_967_295}},
+          {"A1 OK [APPENDUID 77 5:6] done", nil},
+          {"A1 OK [APPENDUID 77 5,7] done", nil},
+          {"A1 OK [APPENDUID 0 5] done", nil},
+          {"A1 OK [APPENDUID 77 4294967296] done", nil},
+          {"A1 OK [APPENDUID 4294967296 5] done", nil},
+          {"A1 OK [APPENDUID 77 05] done", nil},
+          {"A1 OK [APPENDUID 77 5]done", nil},
+          {"A1 OK appended", nil},
+          {"A1 OK [APPENDUID 77] done", nil}
+        ] do
+      expected =
+        case expected do
+          {validity, uid} -> %{uid: uid, uid_validity: validity}
+          nil -> %{uid: nil, uid_validity: nil}
+        end
+
+      assert append_uid(line) == expected, line
+    end
+  end
+
   test "quotes escapes and refuses CR LF and NUL before writing" do
     assert quote_string("a\\b\"c") == "\"a\\\\b\\\"c\""
     for value <- ["a\r", "a\n", "a" <> <<0>>], do: refute(safe_text?(value))

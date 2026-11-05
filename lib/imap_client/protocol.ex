@@ -156,6 +156,22 @@ defmodule IMAPClient.Protocol do
     section |> String.trim() |> String.upcase() |> String.replace(~r/\s+/, " ")
   end
 
+  # RFC 4315 section 3: only the tagged OK of an APPEND carries APPENDUID, and a single
+  # message has a single UID, not a set. Anything else leaves both unknown.
+  def append_uid(completion) do
+    with [_, validity, uid] <-
+           Regex.run(
+             ~r/^\S+\s+OK\s+\[APPENDUID ([1-9][0-9]*) ([1-9][0-9]*)\](?:\s|$)/i,
+             completion
+           ),
+         {:ok, validity} <- positive_integer(validity),
+         {:ok, uid} <- positive_integer(uid) do
+      %{uid: uid, uid_validity: validity}
+    else
+      _ -> %{uid: nil, uid_validity: nil}
+    end
+  end
+
   def positive_integer(value) when is_binary(value) do
     digits = String.trim_leading(value, "0")
 

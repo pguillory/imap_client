@@ -67,7 +67,7 @@ defmodule IMAPClient.PublicSessionsTest do
     assert {:ok, special} = list_special_use_folders(config)
     assert Enum.any?(special, &("\\Drafts" in &1.flags))
 
-    assert :ok =
+    assert {:ok, %{uid: 1}} =
              append(config, "Drafts", "Subject: draft\r\n\r\nhello", flags: ["\\Seen", "\\Draft"])
 
     assert length(FakeServer.mailbox(server, "Drafts").messages) == 1
